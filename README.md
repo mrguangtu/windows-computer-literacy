@@ -5,6 +5,8 @@
 ## 目录
 
 1. [在系统中安装并配置 Clash 使用 V2Ray 服务器](在系统中安装并配置%20Clash%20使用%20V2Ray%20服务器.md)
+2. [Regex 正则表达式](regex.md)
+3. [滴答清单](ticktick.md)
 
 ## 贡献
 
