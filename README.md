@@ -10,6 +10,7 @@
 4. [SSL证书设置和管理](ssl证书.md)
 5. [关于Clash系代理服务器](clash.md)
 6. [海报提示词](海报提示词.md)
+7. [视频下载技巧](video_downloader.md)
 
 ## 贡献
 
