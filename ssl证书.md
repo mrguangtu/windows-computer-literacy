@@ -1,3 +1,7 @@
+---
+typora-root-url: ./images
+---
+
 # 设置ACME自动网站证书更新
 
 
@@ -64,13 +68,13 @@ ZeroSSL 提供了免费的 SSL 证书，这些证书可以通过自动化的方�
      server {
          listen 443 ssl;
          server_name example.com;
-
+     
          ssl_certificate /path/to/your_certificate.crt;
          ssl_certificate_key /path/to/your_private_key.key;
-
+     
          # 如果需要，也可以包含中间证书
          ssl_trusted_certificate /path/to/your_intermediate_certificate.pem;
-
+     
          location / {
              # 你的配置...
          }
@@ -98,3 +102,27 @@ ZeroSSL 提供了免费的 SSL 证书，这些证书可以通过自动化的方�
 请注意，具体的步骤可能会根据你的服务器环境和 Nginx 配置有所不同。如果你需要更详细的帮助，可以查看 ZeroSSL 的开发者部分或 Nginx 的官方文档。
 
 这个公司还提供了个机器人，用来获得证书。不过看起来不好用。没有自动更新的设置呢。https://github.com/zerossl/zerossl-bot
+
+
+
+## cdn证书到期操作
+
+七牛云 CDN 证书到期一般有两个步骤。
+
+首先，先去申请免费证书的网站，比如 [zero SSl](https://app.zerossl.com/dashboard)。
+
+![image-20250419054428108](/ssl证书/image-20250419054428108.png)
+
+在这个网站上操作几步即可。此时，您需要证明您拥有域名。
+
+
+
+这个时候要去域名服务商，例如[阿里](https://dns.console.aliyun.com/)，去添加一个 CNAME 记录，也就是将一个字符串的前缀域名指向一个特定的url，方便进行验证。当您的 CNAME 记录修改好之后，点击验证，这样就会帮您生成一个证书。
+
+![image-20250419054933337](/ssl证书/image-20250419054933337.png)
+
+证书是一个文件包，您将这个证书文件包下载下来并解压缩，有 3 个文件，一个是 ca bundle，一个是 certificate，还有一个是 private key。
+
+![image-20250419054847318](/ssl证书/image-20250419054847318.png)
+
+然后，将 certificate 和 private key 这两个文件传到七牛云里面证书管理中上传自有证书即可。最后再找到域名部署一下就好了。
